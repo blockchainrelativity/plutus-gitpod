@@ -1,9 +1,4 @@
 tasks:
   - name: Initial init
-    init: sh <(curl -L https://nixos.org/nix/install) --daemon
-    command: mkdir myproject && cd myproject
-  - name: Get Nix Tools
-    init: nix-shell -p cabal-install ghc
-    command: cabal --version && cabal-install version 3.0.0.0
-  - name: Create Structure
-    init: cabal init
+    init: curl -L https://nixos.org/nix/install | sh
+    command: mkdir myproject && cd myproject && nix-shell -p cabal-install ghc
