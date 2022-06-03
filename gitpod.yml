@@ -7,15 +7,13 @@ tasks:
     command: >
         cd plutus-apps &&
         cd plutus-playground-server &&
-        nix-build -A plutus-playground.server &&
         nix-shell -p cabal-install ghc &&
-        plutus-playground-server
+        GC_DONT_GC=1 nix-build -A plutus-playground.server
   - name: Plutus Client Start
     init: gp sync-await initial 
     command: >
         cd plutus-apps && 
         cd plutus-playground-client &&
-        nix-build -A plutus-playground.client &&
         nix-shell -p cabal-install ghc && 
         npm run start
   
