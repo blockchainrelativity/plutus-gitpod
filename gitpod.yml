@@ -1,5 +1,4 @@
-image: 
-  file: inputoutput/plutus-starter-devcontainer
+image: inputoutput/plutus-starter-devcontainer
   
 # tasks:
 #   - name: Plutus Server Start
