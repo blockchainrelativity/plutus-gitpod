@@ -1,19 +1,22 @@
-tasks:
-  - name: Plutus Server Start
-    init: >
-        curl -L https://nixos.org/nix/install | sh && 
-        git clone https://github.com/input-output-hk/plutus-apps &&
-        gp sync-done initial
-    command: >
-        cd plutus-apps &&
-        cd plutus-playground-server &&
-        nix-shell -p cabal-install ghc &&
-        GC_DONT_GC=1 nix-build -A plutus-playground.server
-  - name: Plutus Client Start
-    init: gp sync-await initial 
-    command: >
-        cd plutus-apps && 
-        cd plutus-playground-client &&
-        nix-shell -p cabal-install ghc && 
-        npm run start
+image: 
+  file: inputoutput/plutus-starter-devcontainer
+  
+# tasks:
+#   - name: Plutus Server Start
+#     init: >
+#         curl -L https://nixos.org/nix/install | sh && 
+#         git clone https://github.com/input-output-hk/plutus-apps &&
+#         gp sync-done initial
+#     command: >
+#         cd plutus-apps &&
+#         cd plutus-playground-server &&
+#         nix-shell -p cabal-install ghc &&
+#         GC_DONT_GC=1 nix-build -A plutus-playground.server
+#   - name: Plutus Client Start
+#     init: gp sync-await initial 
+#     command: >
+#         cd plutus-apps && 
+#         cd plutus-playground-client &&
+#         nix-shell -p cabal-install ghc && 
+#         npm run start
   
